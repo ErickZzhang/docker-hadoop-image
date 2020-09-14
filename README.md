@@ -31,3 +31,5 @@
 ```
 ./start-container.sh
 ```
+## conf说明
+`zkEnv.sh中修改了找不到JAVA_HOME时的java,便于在主机上ssh远程开启从机的zkServer.sh`
