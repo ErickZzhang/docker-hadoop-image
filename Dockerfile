@@ -1,6 +1,6 @@
 FROM eric/ubuntu:base
 
-MAINTAINER <erick.zhttty@gmail.com>
+LABEL Author="erick.zhttty@gmail.com"
 
 WORKDIR /root
 
@@ -8,18 +8,20 @@ WORKDIR /root
 COPY config/* /tmp/
 COPY res/* /tmp/
 
-# install jdk1.8.0_261, hadoop2.7.3, zookeeper3.4.14, hbase2.0.4
+# install jdk1.8.0_261, hadoop2.7.3, zookeeper3.4.14, hbase2.0.4, maven
 RUN tar -xzf /tmp/jdk-8u261-linux-x64.tar.gz -C /usr/ && \
 tar -xzf /tmp/hadoop-2.7.3.tar.gz -C /usr/ && \
 tar -xzf /tmp/zookeeper-3.4.14.tar.gz -C /usr/ && \
-tar -xzf /tmp/hbase-2.0.4-bin.tar.gz -C /usr/
+tar -xzf /tmp/hbase-2.0.4-bin.tar.gz -C /usr/ && \
+tar -xzf /tmp/apache-maven-3.6.3-bin.tar.gz -C /usr/
 
 #set environment variable
 ENV JAVA_HOME=/usr/jdk1.8.0_261
 ENV HADOOP_HOME=/usr/hadoop-2.7.3
 ENV ZOOKEEPER_HOME=/usr/zookeeper-3.4.14
 ENV HBASE_HOME=/usr/hbase-2.0.4
-ENV PATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$ZOOKEEPER_HOME/bin:$HBASE_HOME/bin
+ENV MAVEN_HOME=/usr/apache-maven-3.6.3
+ENV PATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$ZOOKEEPER_HOME/bin:$HBASE_HOME/bin:$MAVEN_HOME/bin
 
 
 RUN mkdir -p ~/hdfs/namenode && \
