@@ -54,6 +54,8 @@ mv /tmp/hbase-env.sh $HBASE_HOME/conf/hbase-env.sh && \
 mv /tmp/hbase-site.xml $HBASE_HOME/conf/hbase-site.xml && \
 mv /tmp/regionservers $HBASE_HOME/conf/regionservers && \
 
+# maven conf
+mv /tmp/settings.xml ${MAVEN_HOME}/conf/settings.xml && \
 
 rm -rf /tmp/* && \
 rm -rf $HBASE_HOME/docs && \
